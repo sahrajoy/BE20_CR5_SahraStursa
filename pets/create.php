@@ -78,19 +78,19 @@
                 <!-- Checkbox vaccinated -->
                 <label class="form-label">
                     <h3>Vaccinated: </h3>
-                    <input type="checkbox" id="vaccinated" value="1" name="vaccinated" class="form-control">
+                    <input type="checkbox" id="vaccinated" value="1" name="vaccinated" >
                 </label>
                 <!-- Checkbox castrated -->
                 <label class="form-label">
                     <h3>Castrated: </h3>
-                    <input type="checkbox" id="castrated" value="1" name="castrated" class="form-control">
+                    <input type="checkbox" id="castrated" value="1" name="castrated" >
                 </label>
                 <!-- Checkbox chipped -->
                 <label class="form-label">
                     <h3>Chipped: </h3>
-                    <input type="checkbox" id="chipped" value="1" name="chipped" class="form-control">
+                    <input type="checkbox" id="chipped" value="1" name="chipped" >
                 </label>
-    
+
                 <div class="buttonForm">
                     <input type="submit" value="Create" name="create" class="btn btn-success">
                 </div>

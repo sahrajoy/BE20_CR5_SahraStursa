@@ -61,7 +61,7 @@
                             </form>
                             ";
                         }  elseif(!isset($_SESSION["user"]) && !isset($_SESSION["adm"])) {
-                            $cards .= "<a href='pet/details.php?id=$row[pet_id]' class='btn btn-primary'>Adopt</a>";
+                            $cards .= "<a href='../user/login.php' class='btn btn-primary'>Adopt</a>";
                         }
                     $cards .= "</div>
                 </div>
@@ -88,6 +88,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+
     <?php require_once 'components/navbar.php'; ?>
     
     <h1>Pets available</h1>
@@ -102,7 +103,7 @@
         </div>
     </div>
 
-    <?php require_once 'components/footer.php'; ?>
+    <?php require_once 'components/footer.php'; echo$_SESSION("adm") ?>
 
     <!-- SweetAlert for Delete Success -->
     <?php if (isset($_GET['delete']) && $_GET['delete'] == 'success'): ?>
