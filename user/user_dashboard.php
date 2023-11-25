@@ -66,13 +66,10 @@
     <?php if ($updateSuccess): ?>
     <script>
         Swal.fire({
-            position: 'top-end',
             icon: 'success',
             title: 'Login successful',
-            showConfirmButton: false,
-            timer: 1500
         }).then(function() {
-            window.location = "stock.php";
+            window.location = "/BE20_CR5_SahraStursa/index.php";
         });
     </script>
     <?php endif; ?>

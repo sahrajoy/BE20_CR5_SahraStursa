@@ -29,10 +29,10 @@
                 <div class='p-1'>
                     <div class='card' >
                         <div id='img'>
-                            <img src='../assets/$row[pet_img]' class='card-img-top object-fit-cover' alt='...'>
+                            <img src='../assets/$row[pet_img]' class='card-img-top' alt='$row[pet_name]'>
                         </div>    
                         <div class='card-body'>
-                            <h2 class='card-title'>$row[pet_name]</h2>
+                            <h4 class='card-title text-center mt-1'>$row[pet_name]</h4>
                             <p class='card-text'>Gender: $row[pet_gender]</p>
                             <p class='card-text'>Species: $row[pet_species]</p>
                             <p class='card-text'>Age: $row[pet_age]</p>
@@ -53,8 +53,10 @@
                             } else {
                                 $cards .= "<p class='card-text'>Chipped: No</p>";
                             }
-                            $cards .= "<a href='pets/details.php?id=$row[pet_id]' class='btn btn-primary'>Details</a>";
-                        $cards .= "</div>
+                            $cards .= "<div class='d-flex justify-content-between'>
+                                <a href='details.php?id=$row[pet_id]' class='btn btn-primary'>Details</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 ";

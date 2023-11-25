@@ -50,17 +50,17 @@ h1{
     justify-content: center;
 }
 
-h2{
+h3{
+    color: #2e2d2d;
+    font-size: 17px;
+}
+
+h4{
     color: #ffffff;
     background-color: #aff3ed;
     font-size: 17px;
     border-radius: 5px;
     padding: 1vh;
-}
-
-h3{
-    color: #2e2d2d;
-    font-size: 17px;
 }
 
 p {
@@ -115,12 +115,12 @@ p {
 }
 
 .container .row .card #img .card-img-top {
-    position: absolute; /* Position absolute to lay on top of the parent div */
-    min-width: 100%; /* Minimum width to be full container width */
-    min-height: 100%; /* Minimum height to be full container height */
-    top: 50%; /* Center the image vertically */
-    left: 50%; /* Center the image horizontally */
-    transform: translate(-50%, -50%); /* Offset the image to the center */
+    position: absolute; 
+    min-width: 100%; 
+    min-height: 100%; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
     object-fit: cover; 
 }
 

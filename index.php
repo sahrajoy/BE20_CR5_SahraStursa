@@ -4,6 +4,7 @@
     // require_once is the most common used to link the database connetion
     require_once 'components/db_connect.php';
 
+    // alerts
     $adoptSuccsess = false;
     $adoptFailure = false;
     $alreadyAdopt = false;
@@ -47,7 +48,7 @@
                         <img src='assets/$row[pet_img]' class='card-img-top' alt='$row[pet_name]'>
                     </div>    
                     <div class='card-body'>
-                        <h2 class='card-title text-center mt-1'>$row[pet_name]</h2>
+                        <h4 class='card-title text-center mt-1'>$row[pet_name]</h4>
                         <p class='card-text'>Gender: $row[pet_gender]</p>
                         <p class='card-text'>Species: $row[pet_species]</p>
                         <p class='card-text'>Age: $row[pet_age]</p>
@@ -139,11 +140,8 @@
     <?php if (isset($_GET['delete']) && $_GET['delete'] == 'success'): ?>
         <script>
             Swal.fire({
-                position: 'top-end',
                 icon: 'success',
                 title: 'Pet deleted successfully.',
-                showConfirmButton: false,
-                timer: 1500
             });
         </script>
     <?php endif; ?>
@@ -162,11 +160,8 @@
     <?php if ($adoptSuccsess): ?>
     <script>
         Swal.fire({
-            position: 'top-end',
             icon: 'success',
             title: 'You have succsessfully adopted a Pet!',
-            showConfirmButton: false,
-            timer: 1500
         }).then(function() {
             window.location = "/BE20_CR5_SahraStursa/index.php";
         });
@@ -180,7 +175,7 @@
             title: "Oops...",
             text: "Something went wrong!",
         }).then(function() {
-            window.location = "update.php"; 
+            window.location = "/BE20_CR5_SahraStursa/index.php"; 
         });
     </script>
     <?php endif; ?>
@@ -192,7 +187,7 @@
             title: "Oops...",
             text: "You already adopt this pet!",
         }).then(function() {
-            window.location = "update.php"; 
+            window.location = "/BE20_CR5_SahraStursa/index.php"; 
         });
     </script>
     <?php endif; ?>
