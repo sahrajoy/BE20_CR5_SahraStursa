@@ -44,10 +44,10 @@
             <div class='p-1'>
                 <div class='card' >
                     <div id='img'>
-                        <img src='assets/$row[pet_img]' class='card-img-top object-fit-cover' alt='...'>
+                        <img src='assets/$row[pet_img]' class='card-img-top' alt='$row[pet_name]'>
                     </div>    
                     <div class='card-body'>
-                        <h2 class='card-title'>$row[pet_name]</h2>
+                        <h2 class='card-title text-center mt-1'>$row[pet_name]</h2>
                         <p class='card-text'>Gender: $row[pet_gender]</p>
                         <p class='card-text'>Species: $row[pet_species]</p>
                         <p class='card-text'>Age: $row[pet_age]</p>
@@ -68,7 +68,10 @@
                         } else {
                             $cards .= "<p class='card-text'>Chipped: No</p>";
                         }
-                        $cards .= "<a href='pets/details.php?id=$row[pet_id]' class='btn btn-primary'>Details</a>";
+                        // buttons
+                        $cards .= "<div class='d-flex justify-content-between'>
+                        
+                        <a href='pets/details.php?id=$row[pet_id]' class='btn btn-primary'>Details</a>";
 
                         // if a admin is logged in than shows the buttons "Edit" and "Delete"
                         if(isset($_SESSION["adm"])) {
@@ -80,7 +83,7 @@
                         // if user is logged in shows the button "Adopt"
                         if(isset($_SESSION["user"])) {
                             $cards .= "
-                            <form method='POST'>
+                            <form method='POST' class='p-0'>
                                 <input type='hidden' value='$row[pet_id]' name='pet'>
                                 <input type='submit' value='Adopt' name='adopt' class='btn btn-danger'>
                             </form>
@@ -90,7 +93,8 @@
                             <a href='user/login.php' class='btn btn-primary'>Adopt</a>
                             ";
                         }
-                    $cards .= "</div>
+                        $cards .= "</div>
+                    </div>
                 </div>
             </div>
             ";
@@ -115,13 +119,13 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <?php require_once 'components/navbar.php'; ?>
+    <?php require_once 'components/navbar.php';?> 
     
     <h1>Pets available</h1>
     <div class="container">
-        <form style="flex-direction: row" method="GET">
-            <button type="submit" name="Seniors" class="btn btn-success">Seniors</button>
-            <button type="submit" name="showAll" class="btn btn-success">All</button>
+        <form class="d-flex flex-row justify-content-around" method="GET">
+            <button type="submit" name="Seniors" class="btn btn-success filter">Seniors</button>
+            <button type="submit" name="showAll" class="btn btn-success filter">Show All</button>
         </form>
     
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">

@@ -15,7 +15,7 @@ body{
 }
 
 .btn-success{
-    background-color: #94FBAB;
+    background-color: #9cf0ae;
     border: none;
     color: #2e2d2d;
     font-weight: 500;
@@ -50,6 +50,14 @@ h1{
     justify-content: center;
 }
 
+h2{
+    color: #ffffff;
+    background-color: #aff3ed;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 1vh;
+}
+
 h3{
     color: #2e2d2d;
     font-size: 17px;
@@ -68,17 +76,30 @@ p {
     margin: 2vh;
 }
 
+/* landing page */
+/* buttons filter */
+.container .d-flex .filter{
+    background-color: #94FBAB;
+    border: none;
+    color: #2e2d2d;
+    font-weight: 500;
+    font-size: 17px;
+    width: 200px;
+    margin: 0 5px;
+}
+
 /* Cards */
 .container .row {
     margin: 3vh 3vh;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .container .row .card {
-    height: 50vh;
+    height: 45vh;
     margin: 3px 0;
+    padding: 1vh;
 }
 
 .container .row .card #img {
@@ -86,15 +107,25 @@ p {
     display: flex;           
     justify-content: center; 
     align-items: center;     
-    height: 40vh;             
+    height: 30vh;             
     overflow: hidden;         
     width: 100%; 
+    position: relative;
+    border-radius: 5px;
 }
 
-.container .row .card #img .card-img {
-    height: 100%;
-    object-fit: contain;
-    width: auto;
+.container .row .card #img .card-img-top {
+    position: absolute; /* Position absolute to lay on top of the parent div */
+    min-width: 100%; /* Minimum width to be full container width */
+    min-height: 100%; /* Minimum height to be full container height */
+    top: 50%; /* Center the image vertically */
+    left: 50%; /* Center the image horizontally */
+    transform: translate(-50%, -50%); /* Offset the image to the center */
+    object-fit: cover; 
+}
+
+.container .row .card .card-body {
+    padding: 0;
 }
 
 /* create */
