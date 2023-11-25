@@ -68,7 +68,7 @@ p {
     margin: 2vh;
 }
 
-/* home */
+/* Cards */
 .container .row {
     margin: 3vh 3vh;
     display: flex;
@@ -111,7 +111,7 @@ p {
     display: flex;
     justify-content: start;
     align-items: start;
-    flex-direction: row;
+    flex-direction: column;
 }
 .container form .form-label input{
     width: 400px;
@@ -120,9 +120,20 @@ p {
 /* navbar */
 .navbar.bg-body-tertiary {
     width: 100%;
+    height: 17vh;
     background-color: #B8E1FF !important;
-    padding: 3vh;
     color: white;
+    padding: 0 !important;
+}
+.navbar.bg-body-tertiary .container-fluid .navbar-collapse{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar.bg-body-tertiary .container-fluid .navbar-collapse .navbar-nav{
+    display: flex;
+    align-items: flex-end;
 }
 
 /* footer */

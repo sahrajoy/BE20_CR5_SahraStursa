@@ -72,6 +72,7 @@
             $result = mysqli_query($conn, $sql);
             if($result) {
                 $updateSuccess = true;
+
             }else  {
                 $updateFailure = true;
             }
@@ -84,7 +85,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adopt a Pet</title>
+    <title>Adopt a Pet - Update your Profile</title>
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- CSS -->
@@ -97,14 +98,14 @@
 
     <h1>Update your Profile</h1>
     <div class="container">
-        <div class="form">
-            <form method="post" enctype="multipart/form-data">
-                <label>
+        <div class="formUser">
+            <form method="post" enctype="multipart/form-data" class="">
+                <label >
                     <h3>Email:</h3>
                     <input type="email" name="email" class="form-control" value="<?= $row["user_email"]; ?>">
                     <span><?= $emailError; ?></span>
                 </label>
-                <label>
+                <label >
                     <h3>Password:</h3>
                     <input type="password" name="password" class="form-control">
                     <span><?= $passwordError; ?></span>
@@ -128,7 +129,7 @@
         Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Login successful',
+            title: 'Update successful',
             showConfirmButton: false,
             timer: 1500
         }).then(function() {

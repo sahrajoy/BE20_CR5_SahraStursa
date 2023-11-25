@@ -40,7 +40,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adopt a Pet</title>
+    <title>Adopt a Pet - Add a new Pet</title>
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- CSS -->
@@ -56,40 +56,40 @@
         <div class="form">
             <form action="" method="POST" enctype="multipart/form-data">
                 <label class="form-label">
-                    <h3>Image:</h3>
-                    <input type="file" name="img" class="form-control">
+                    <h3 class="me-auto">Image:</h3>
+                    <input type="file" name="img" class="form-control ms-auto">
                 </label>
                 <label class="form-label">
-                    <h3>Name:</h3>
-                    <input type="text" name="name" class="form-control">
+                    <h3 class="me-auto">Name:</h3>
+                    <input type="text" name="name" class="form-control ms-auto">
                 </label>
                 <label class="form-label">
-                    <h3>Gender:</h3>
-                    <input type="text" name="gender" class="form-control">
+                    <h3 class="me-auto">Gender:</h3>
+                    <input type="text" name="gender" class="form-control ms-auto">
                 </label>
                 <label class="form-label">
-                    <h3>Species:</h3>
-                    <input type="text" name="species" class="form-control">
+                    <h3 class="me-auto">Species:</h3>
+                    <input type="text" name="species" class="form-control ms-auto">
                 </label>
                 <label class="form-label">
-                    <h3>Age:</h3>
-                    <input type="number" name="age" class="form-control">
+                    <h3 class="me-auto">Age:</h3>
+                    <input type="number" name="age" class="form-control ms-auto">
                 </label>
                 <!-- Checkbox vaccinated -->
-                <label class="form-label">
-                    <h3>Vaccinated: </h3>
-                    <input type="checkbox" id="vaccinated" value="1" name="vaccinated" >
-                </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="vaccinated">
+                    <label class="form-check-label" for="defaultCheck1">Vaccinated</label>
+                </div>
                 <!-- Checkbox castrated -->
-                <label class="form-label">
-                    <h3>Castrated: </h3>
-                    <input type="checkbox" id="castrated" value="1" name="castrated" >
-                </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="castrated">
+                    <label class="form-check-label" for="defaultCheck1">Castrated</label>
+                </div>
                 <!-- Checkbox chipped -->
-                <label class="form-label">
-                    <h3>Chipped: </h3>
-                    <input type="checkbox" id="chipped" value="1" name="chipped" >
-                </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="chipped">
+                    <label class="form-check-label" for="defaultCheck1">Chipped</label>
+                </div>
 
                 <div class="buttonForm">
                     <input type="submit" value="Create" name="create" class="btn btn-success">

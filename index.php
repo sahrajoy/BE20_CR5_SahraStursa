@@ -3,7 +3,32 @@
 
     // require_once is the most common used to link the database connetion
     require_once 'components/db_connect.php';
+
+    $adoptSuccsess = false;
+    $adoptFailure = false;
+    $adoptFailureAlreadyAdopt = false;
    
+    if (isset($_SESSION["user"]) && isset($_POST["adopt"])) {
+        $petId = $_POST["pet"];
+        $userId = $_SESSION["user"];
+    
+        // Check if the pet has already been adopted by this user
+        $checkQuery = "SELECT * FROM `pet_adopt` WHERE `fk_user` = $userId AND `fk_pet` = $petId";
+        $checkResult = mysqli_query($conn, $checkQuery);
+    
+        // If the pet has not been adopted by this user
+        if (mysqli_num_rows($checkResult) == 0) {
+            $date = date("Y-m-d");
+            $insertQuery = "INSERT INTO `pet_adopt` (`fk_user`, `fk_pet`, `adopt_date`) VALUES ($userId, $petId, '$date')";
+            if (mysqli_query($conn, $insertQuery)) {
+                $adoptSuccsess = true;
+            } else {
+                $adoptFailure = true;
+            }
+        } else {
+            $adoptFailureAlreadyAdopt = true;
+        }
+    }
     $cards = "";
     
     if(isset($_GET['Seniors'])){
@@ -56,12 +81,14 @@
                         if(isset($_SESSION["user"])) {
                             $cards .= "
                             <form method='POST'>
-                                <input type='hidden' value='$row[pet_id]' name='adopt'>
+                                <input type='hidden' value='$row[pet_id]' name='pet'>
                                 <input type='submit' value='Adopt' name='adopt' class='btn btn-danger'>
                             </form>
                             ";
                         }  elseif(!isset($_SESSION["user"]) && !isset($_SESSION["adm"])) {
-                            $cards .= "<a href='../user/login.php' class='btn btn-primary'>Adopt</a>";
+                            $cards .= "
+                            <a href='user/login.php' class='btn btn-primary'>Adopt</a>
+                            ";
                         }
                     $cards .= "</div>
                 </div>
@@ -88,7 +115,6 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-
     <?php require_once 'components/navbar.php'; ?>
     
     <h1>Pets available</h1>
@@ -117,7 +143,6 @@
             });
         </script>
     <?php endif; ?>
-
     <!-- SweetAlert for Delete Error -->
     <?php if (isset($_GET['delete']) && $_GET['delete'] == 'error'): ?>
         <script>
@@ -127,6 +152,45 @@
                 text: "Something went wrong!",
             });
         </script>
+    <?php endif; ?>
+
+    <!-- SweetAlert for Adopt Success -->
+    <?php if ($adoptSuccsess): ?>
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'You have succsessfully adopted a Pet!',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function() {
+            window.location = "/BE20_CR5_SahraStursa/index.php";
+        });
+    </script>
+    <?php endif; ?>
+    <!-- SweetAlert for Adopt Failure -->
+    <?php if ($adoptFailure): ?> 
+    <script>
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+        }).then(function() {
+            window.location = "update.php"; 
+        });
+    </script>
+    <?php endif; ?>
+    <!-- SweetAlert for aleady Adopt Failure -->
+    <?php if ($adoptFailureAlreadyAdopt): ?> 
+    <script>
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You already adopt this pet!",
+        }).then(function() {
+            window.location = "update.php"; 
+        });
+    </script>
     <?php endif; ?>
     
     <!-- bootstrap js -->

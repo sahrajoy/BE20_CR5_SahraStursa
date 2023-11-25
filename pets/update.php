@@ -57,7 +57,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adopt a Pet</title>
+    <title>Adopt a Pet - Update Pet</title>
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- CSS -->
@@ -92,20 +92,20 @@
                 <input type="number" name="age" class="form-control" value="<?= $row["pet_age"]??"" ?>">
             </label>
             <!-- Checkbox vaccinated -->
-            <label class="form-label">
-                <h3>Vaccinated: </h3>
-                <input type="checkbox" id="vaccinated" name="vaccinated" <?= $row["pet_vaccinated"] ? "checked" : "" ?>>
-            </label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" <?= $row["pet_vaccinated"] ? "checked" : "" ?> name="vaccinated">
+                <label class="form-check-label" for="vaccinated">Vaccinated</label>
+            </div>
             <!-- Checkbox castrated -->
-            <label class="form-label">
-                <h3>Castrated: </h3>
-                <input type="checkbox" id="castrated" name="castrated" <?= $row["pet_vaccinated"] ? "checked" : "" ?>>
-            </label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" <?= $row["pet_castrated"] ? "checked" : "" ?> name="castrated">
+                <label class="form-check-label" for="castrated">Castrated</label>
+            </div>
             <!-- Checkbox chipped -->
-            <label class="form-label">
-                <h3>Chipped: </h3>
-                <input type="checkbox" id="chipped" name="chipped" <?= $row["pet_vaccinated"] ? "checked" : "" ?>>
-            </label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" <?= $row["pet_chipped"] ? "checked" : "" ?> name="chipped">
+                <label class="form-check-label" for="chipped">Chipped</label>
+            </div>
     
             <div class="buttonForm">
                 <input type="submit" value="Update" name="update" class="btn btn-success">

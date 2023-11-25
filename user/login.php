@@ -46,10 +46,12 @@
                 if($row["user_status"] === "user") {
                     // here you set var for the session so you can reach the datas in the session
                     $_SESSION["user"] = $row["user_id"]; 
+                    $_SESSION["img"] = $row["user_img"];
                     header("Location: /BE20_CR5_SahraStursa/index.php");
                 } else if($row["user_status"] === "adm") {
                     // here you set var for the session so you can reach the datas in the session
                     $_SESSION["adm"] = $row["user_id"]; 
+                    $_SESSION["img"] = $row["user_img"];
                     header("Location: /BE20_CR5_SahraStursa/index.php");
                 }
             }else  {
@@ -65,7 +67,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adopt a Pet</title>
+    <title>Adopt a Pet - Login</title>
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- CSS -->
@@ -75,7 +77,9 @@
 </head>
 <body>
     <?php require_once '../components/navbar.php'; ?>
-
+    
+    <h1>Login</h1>
+    <!-- test user -->
     <div class="testuser">
         <p> User  <br>
             password: 123123 <br>
@@ -86,8 +90,7 @@
             emal: testadmin@test.at <br>
         </p>
     </div>
-    
-    <h1>Login</h1>
+
     <div class="container">
         <div class="form">
             <form method="post" >

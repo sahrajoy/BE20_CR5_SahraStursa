@@ -1,6 +1,8 @@
 <?php
   echo "
-    <div id='footer'>
-        <div id='copyright'>&copy; 2023 Copyright SahraJoy</div>
-    </div>
+    <footer class='fixed-bottom'>
+      <div id='footer'>
+          <div id='copyright'>&copy; 2023 Copyright SahraJoy</div>
+      </div>
+    </footer>
 ";
