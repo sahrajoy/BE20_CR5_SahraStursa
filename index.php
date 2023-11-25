@@ -6,7 +6,7 @@
 
     $adoptSuccsess = false;
     $adoptFailure = false;
-    $adoptFailureAlreadyAdopt = false;
+    $alreadyAdopt = false;
    
     if (isset($_SESSION["user"]) && isset($_POST["adopt"])) {
         $petId = $_POST["pet"];
@@ -26,7 +26,7 @@
                 $adoptFailure = true;
             }
         } else {
-            $adoptFailureAlreadyAdopt = true;
+            $alreadyAdopt = true;
         }
     }
     $cards = "";
@@ -129,7 +129,7 @@
         </div>
     </div>
 
-    <?php require_once 'components/footer.php'; echo$_SESSION("adm") ?>
+    <?php require_once 'components/footer.php';?>
 
     <!-- SweetAlert for Delete Success -->
     <?php if (isset($_GET['delete']) && $_GET['delete'] == 'success'): ?>
@@ -181,7 +181,7 @@
     </script>
     <?php endif; ?>
     <!-- SweetAlert for aleady Adopt Failure -->
-    <?php if ($adoptFailureAlreadyAdopt): ?> 
+    <?php if ($alreadyAdopt): ?> 
     <script>
         Swal.fire({
             icon: "error",

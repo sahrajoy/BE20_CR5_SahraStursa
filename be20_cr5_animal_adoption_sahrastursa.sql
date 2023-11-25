@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 25. Nov 2023 um 01:41
+-- Erstellungszeit: 25. Nov 2023 um 18:23
 -- Server-Version: 10.4.28-MariaDB
 -- PHP-Version: 8.2.4
 
@@ -46,10 +46,9 @@ CREATE TABLE `pets` (
 INSERT INTO `pets` (`pet_id`, `pet_img`, `pet_name`, `pet_gender`, `pet_species`, `pet_age`, `pet_vaccinated`, `pet_castrated`, `pet_chipped`) VALUES
 (1, 'puppy-1903313_640.jpg', 'Wandis', 'Female', 'Dog', 1, 1, 1, 0),
 (2, 'Lizard_Mexican_Beaded.jpg', 'Dalila', 'Female', 'Lizard, mexican beaded', 2, 0, 0, 0),
-(3, 'corgi-4415649_640.jpg', 'Sadella\n', 'Female', 'Corgi Dog', 6, 0, 0, 0),
+(3, 'corgi-4415649_640.jpg', 'Sadella', 'Female', 'Corgi Dog', 6, 0, 1, 0),
 (4, 'spider-2740997_640.jpg', 'Bary', 'Male', 'Tarantula', 2, 0, 0, 0),
 (5, 'comb-duck-3571812_640.jpg', 'Shari\n', 'Female', 'Duck', 3, 0, 0, 0),
-(6, 'pet.jpg', 'Rodge', 'Male', 'Dog', 5, 0, 0, 0),
 (7, 'dog-1839808_640.jpg', 'Wolfie', 'Male', 'Dog', 12, 0, 0, 0),
 (8, 'tarantulas-by-experiencedifficulty-level.jpg', 'Seline', 'Female', 'Tarantula', 1, 1, 1, 0),
 (9, 'istockphoto-1446871237-612x612.jpg', 'Etti\n', 'Female', 'Hyena', 2, 0, 0, 0),
@@ -60,9 +59,7 @@ INSERT INTO `pets` (`pet_id`, `pet_img`, `pet_name`, `pet_gender`, `pet_species`
 (14, 'istockphoto-1436716315-612x612.jpg', 'Renado', 'Male', 'Cat', 6, 1, 1, 0),
 (15, 'istockphoto-1477651586-612x612.jpg', 'Alberta', 'Female', 'Dog', 5, 1, 0, 0),
 (16, 'istockphoto-1735529439-612x612.jpg', 'Parke', 'Male', 'Cat', 9, 0, 0, 0),
-(17, 'pet.jpg', 'Wandis', 'Female', 'Dog', 13, 0, 0, 0),
-(18, 'Burmese-Mountain-Tortoise-Manouria-emys.jpg', 'Karilynn', 'Female', 'Turtle', 7, 0, 0, 0),
-(19, 'pet.jpg', 'Juan', 'Male', 'Dog', 9, 0, 0, 0);
+(18, 'Burmese-Mountain-Tortoise-Manouria-emys.jpg', 'Karilynn', 'Female', 'Turtle', 7, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -76,6 +73,17 @@ CREATE TABLE `pet_adopt` (
   `fk_pet` int(11) NOT NULL,
   `adopt_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `pet_adopt`
+--
+
+INSERT INTO `pet_adopt` (`adopt_id`, `fk_user`, `fk_pet`, `adopt_date`) VALUES
+(1, 3, 2, '2023-11-25'),
+(2, 3, 3, '2023-11-25'),
+(3, 8, 3, '2023-11-25'),
+(4, 6, 3, '2023-11-25'),
+(6, 6, 2, '2023-11-25');
 
 -- --------------------------------------------------------
 
@@ -96,11 +104,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_img`, `user_email`, `user_password`, `user_status`) VALUES
-(1, '6560dd292706d.jpg', 'sahra.stursa@live.at', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'adm'),
-(2, 'user.jpg', 'testadmin@test.at', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'user'),
+(2, 'user.jpg', 'testadmin@test.at', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'adm'),
 (3, 'user.jpg', 'testuser@test.at', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
 (6, 'user.jpg', 'test@test1.at', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
-(7, 'user.jpg', 'test@test2.at', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user');
+(7, 'user.jpg', 'test@test2.at', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(8, 'user.jpg', 'test@test3.at', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user');
 
 --
 -- Indizes der exportierten Tabellen
@@ -116,7 +124,9 @@ ALTER TABLE `pets`
 -- Indizes für die Tabelle `pet_adopt`
 --
 ALTER TABLE `pet_adopt`
-  ADD PRIMARY KEY (`adopt_id`);
+  ADD PRIMARY KEY (`adopt_id`),
+  ADD KEY `fk_user` (`fk_user`),
+  ADD KEY `fk_pet` (`fk_pet`);
 
 --
 -- Indizes für die Tabelle `user`
@@ -138,13 +148,24 @@ ALTER TABLE `pets`
 -- AUTO_INCREMENT für Tabelle `pet_adopt`
 --
 ALTER TABLE `pet_adopt`
-  MODIFY `adopt_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `adopt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Constraints der exportierten Tabellen
+--
+
+--
+-- Constraints der Tabelle `pet_adopt`
+--
+ALTER TABLE `pet_adopt`
+  ADD CONSTRAINT `pet_adopt_ibfk_1` FOREIGN KEY (`fk_user`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `pet_adopt_ibfk_2` FOREIGN KEY (`fk_pet`) REFERENCES `pets` (`pet_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
