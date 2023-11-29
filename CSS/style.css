@@ -91,8 +91,6 @@ p {
 /* Cards */
 .container .row {
     margin: 3vh 3vh;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
@@ -103,11 +101,7 @@ p {
 }
 
 .container .row .card #img {
-    padding: 1vh;
-    display: flex;           
-    justify-content: center; 
-    align-items: center;     
-    height: 30vh;             
+    height: 40vh;             
     overflow: hidden;         
     width: 100%; 
     position: relative;
@@ -115,12 +109,10 @@ p {
 }
 
 .container .row .card #img .card-img-top {
-    position: absolute; 
     min-width: 100%; 
     min-height: 100%; 
     top: 50%; 
     left: 50%; 
-    transform: translate(-50%, -50%); 
     object-fit: cover; 
 }
 

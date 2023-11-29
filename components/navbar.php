@@ -1,9 +1,10 @@
 <?php
+
 echo "
     <nav class='navbar navbar-expand-lg bg-body-tertiary'>
         <div class='container-fluid'>
-            <a class='navbar-brand' href='/BE20_CR5_SahraStursa/index.php'>
-                <img src='../assets/logo.jpg' alt='logo' style='height: 15vh; width: 15vh; object-fit: cover;'>        
+            <a class='navbar-brand' href='{$loc}index.php'>
+                <img src='{$loc}assets/logo.jpg' alt='logo' style='height: 15vh; width: 15vh; object-fit: cover;'>        
             </a>
             <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
                 <span class='navbar-toggler-icon'></span>
@@ -15,10 +16,10 @@ echo "
                     if(isset($_SESSION['adm'])){
                         echo " 
                         <li class='nav-item align-self-center'>
-                            <a class='nav-link' href='/BE20_CR5_SahraStursa/user/user_dashboard.php'>User Dashboard</a>
+                            <a class='nav-link' href='{$loc}user/user_dashboard.php'>User Dashboard</a>
                         </li>
                         <li class='nav-item align-self-center'>
-                            <a class='nav-link' href='/BE20_CR5_SahraStursa/pets/create.php'>Add Pets</a>
+                            <a class='nav-link' href='{$loc}pets/create.php'>Add Pets</a>
                         </li>
                         ";
                     }
@@ -26,7 +27,7 @@ echo "
                     if(isset($_SESSION['user'])){
                         echo " 
                         <li class='nav-item align-self-center'>
-                            <a class='nav-link' href='/BE20_CR5_SahraStursa/pets/dashboard_adopted_pets.php'>Your adopted Pets</a>
+                            <a class='nav-link' href='{$loc}pets/dashboard_adopted_pets.php'>Your adopted Pets</a>
                         </li>
                         ";
                     }
@@ -34,19 +35,19 @@ echo "
                     if(isset($_SESSION['user']) || isset($_SESSION['adm'])){
                         echo " 
                         <li class='nav-item align-self-center'>
-                            <a class='nav-link' href='/BE20_CR5_SahraStursa/user/update.php'>Update your Profile</a>
+                            <a class='nav-link' href='{$loc}user/update.php'>Update your Profile</a>
                         </li>
                         <li class='nav-item align-self-center'>
-                            <a class='nav-link' href='/BE20_CR5_SahraStursa/user/logout.php'>Logout</a>
+                            <a class='nav-link' href='{$loc}user/logout.php'>Logout</a>
                         </li>
                         ";
                     }else{
                         echo " 
                         <li class='nav-item align-self-center'>
-                            <a class='nav-link' href='/BE20_CR5_SahraStursa/user/login.php'>Login</a>
+                            <a class='nav-link' href='{$loc}user/login.php'>Login</a>
                         </li>
                         <li class='nav-item align-self-center'>
-                        <a class='nav-link' href='/BE20_CR5_SahraStursa/user/register.php'>Register</a>
+                        <a class='nav-link' href='{$loc}user/register.php'>Register</a>
                         </li>
                         ";
                     }
@@ -54,7 +55,7 @@ echo "
                     if(isset($_SESSION['user']) || isset($_SESSION['adm'])){
                         echo " 
                         <div id='img'>
-                            <img src='../assets/$_SESSION[img]' alt='User Image' style='height: 6vh; width: 6vh; object-fit: cover; border-radius: 50vh; margin: 1vh;'>
+                            <img src='{$loc}assets/$_SESSION[img]' alt='User Image' style='height: 6vh; width: 6vh; object-fit: cover; border-radius: 50vh; margin: 1vh;'>
                         </div>
                         ";
                     }

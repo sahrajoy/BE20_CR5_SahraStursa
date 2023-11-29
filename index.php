@@ -120,7 +120,9 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <?php require_once 'components/navbar.php';?> 
+    <?php 
+    $loc = "";
+    require_once 'components/navbar.php';?> 
     
     <h1>Pets available</h1>
     <div class="container">
@@ -129,7 +131,7 @@
             <button type="submit" name="showAll" class="btn btn-success filter">Show All</button>
         </form>
     
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
             <?= $cards; ?>  
         </div>
     </div>

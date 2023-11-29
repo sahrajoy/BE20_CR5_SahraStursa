@@ -56,6 +56,11 @@
             $passwordError = "Please enter a valid password";
         }
 
+        // check if img is empty
+        if(!empty($img)) { 
+            $_SESSION["img"] = $img[0];
+        }
+
         if($error === false) {
             $password = hash("sha256", $password); //hash crypt the password
 
@@ -94,7 +99,10 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <?php require_once '../components/navbar.php'; ?>
+    <?php
+    $loc="../";
+    require_once '../components/navbar.php'; 
+    ?>  
 
     <h1>Update your Profile</h1>
     <div class="container">

@@ -42,7 +42,10 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <?php require_once '../components/navbar.php'; ?>
+    <?php
+    $loc="../";
+    require_once '../components/navbar.php'; 
+    ?>
 
     <h1>User Dashboard</h1>
     <div class="container">
